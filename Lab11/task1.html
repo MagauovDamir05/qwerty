@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+ <meta charset="utf-8">
+ <title>Задача 1</title>
+ <script>
+ function replaceNumbers(a, b, c, d) {
+ if (a <= b && b <= c && c <= d) {
+ return [d, d, d, d];
+ } else if (a > b && b > c && c > d) {
+ return [a, b, c, d];
+ } else {
+ return [a * a, b * b, c * c, d * d];
+ }
+ }
+
+ function checkNumbers() {
+ // Get the input values
+ var a = parseFloat(document.getElementById('numbera').value);
+ var b = parseFloat(document.getElementById('numberb').value);
+ var c = parseFloat(document.getElementById('numberc').value);
+ var d = parseFloat(document.getElementById('numberd').value);
+
+ // Check if the input is valid
+ if (isNaN(a) || isNaN(b) || isNaN(c) || isNaN(d)) {
+ alert('Пожалуйста, введите корректные действительные числа.');
+ return;
+ }
+
+ // Compute the result
+ var result = replaceNumbers(a, b, c, d);
+
+ // Display the result
+ if (result[0] === result[1] && result[1] === result[2] && result[2] === result[3]) {
+ var newResult = document.createElement('p');
+ newResult.innerHTML =
+ 'Числа ' + result[0] + ', ' + result[1] + ', ' + result[2] + ', ' + result[3] + ' равны.';
+ document.getElementById('results').appendChild(newResult);
+ } else {
+ var newResult = document.createElement('p');
+ newResult.innerHTML =
+ 'Числа равны: ' + result.join(', ') + '.';
+ document.getElementById('results').appendChild(newResult);
+ }
+ }
+ </script>
+</head>
+<body>
+ <p>
+ <label for="numbera">Введите действительное число a: </label>
+ <input type="text" id="numbera" value="">
+ </p>
+ <p>
+ <label for="numberb">Введите действительное число b: </label>
+ <input type="text" id="numberb" value="">
+ </p>
+ <p>
+ <label for="numberc">Введите действительное число c: </label>
+ <input type="text" id="numberc" value="">
+ </p>
+ <p>
+ <label for="numberd">Введите действительное число d: </label>
+ <input type="text" id="numberd" value="">
+ </p>
+ <p>
+ <button onClick="checkNumbers()">Вычислить</button>
+ </p>
+ <div id="results"></div>
+ <p style="text-align: center;" onclick="location.reload(true);">
+ Ещё раз!
+ </p>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <style>
+        /* Обнуляем стандартные отступы и поля */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            position: relative; /* Установка позиции относительно тела документа */
+        }
+        
+        /* Стили для навигационного меню */
+        #navbar, #navbar ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #navbar {
+            height: 70px; /* Увеличиваем высоту навигационного меню */
+            background-color: #007acc;
+            display: flex; /* Используем flexbox для расположения элементов в строку */
+            align-items: center; /* Выравниваем элементы по вертикали */
+            justify-content: center; /* Выравниваем элементы по горизонтали */
+            margin-right: 0; /* Убираем отступ */
+        }
+
+        #navbar img {
+            margin-right: 10px; /* Отступ между логотипом и пунктами меню */
+            width: 75px;
+        }
+
+        #navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #navbar li {
+            position: relative;
+            display: inline-block;
+            }
+
+        #navbar li a {
+            display: block;
+            padding: 20px; /* Увеличиваем отступы для большего кликабельного пространства */
+            color: white;
+            text-decoration: none;
+        }
+
+        #navbar li:hover {
+            background-color: blue;
+        }
+
+        #navbar li.search {
+            margin-left: 20px; /* Отступ для элемента "Поиск" */
+        }
+
+        /* Стили для подпункта */
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #007acc;
+            z-index: 1;
+        }
+
+        #navbar li:hover .submenu {
+            display: block;
+        }
+
+        .submenu li {
+            display: block;
+        }
+
+        .submenu li a {
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .submenu li:hover {
+            background-color: #005f8b;
+        }
+
+        /* Слайдер */
+        .carousel {
+            width: 100%; /* Ширина слайдера занимает всю доступную ширину */
+            max-width: 500px; /* Ограничиваем максимальную ширину слайдера */
+            position: absolute; /* Устанавливаем позицию абсолютной, чтобы слайдер был независим от других элементов */
+            left: 100px; /* Расположение слева от страницы */
+            bottom: 300px; /* Расположение относительно нижней границы страницы */
+        }
+
+        .carousel__item{
+            background-color: #007acc; /* Цвет фона элемента слайдера */
+            padding: 12px; /* Внутренний отступ элемента слайдера */
+            opacity: 0; /* Начальная прозрачность элемента */
+            animation: vertical 9s linear infinite; /* Анимация для элемента слайдера */
+            color: #fff; /* Цвет текста элемента слайдера */
+        }
+
+        .carousel__info{
+            flex-grow: 1; /* Установка флекс-роста для информационного блока слайдера */
+        }
+
+        .carousel__title{
+            font-size: 20px; /* Размер шрифта заголовка */
+            text-transform: uppercase; /* Преобразование текста заголовка в верхний регистр */
+            margin: 0 0 15px 0; /* Внешние отступы заголовка */
+        }
+
+        .text-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 0; /* Располагаем слева от экрана */
+            transform: translateY(-50%);
+            color: black; /* Изменяем цвет текста на черный */
+            text-align: left;
+            padding-left: 20px; /* Добавляем отступ слева */
+        }
+
+        @keyframes vertical {
+
+        0%{
+            transform: translateY(100%) scale(.5); /* Начальное положение и масштаб элемента */
+            opacity: 0; /* Начальная прозрачность элемента */
+            visibility:hidden; /* Скрытие элемента */
+        }
+        
+        16.6666666666%, 33.3333333333% {
+            transform: translateY(100%) scale(.7); /* Промежуточное положение и масштаб элемента */
+            opacity: .4; /* Промежуточная прозрачность элемента */
+            visibility:visible; /* Отображение элемента */
+        
+        }
+        50%, 66.6666666666% {
+            transform: translateY(0) scale(1); /* Промежуточное положение и масштаб элемента */
+            opacity: 1; /* Промежуточная прозрачность элемента */
+            visibility:visible; /* Отображение элемента */
+        }
+
+        83.3333333333%, 100% {
+            transform: translateY(-100%) scale(.5); /* Конечное положение и масштаб элемента */
+            opacity: 0; /* Конечная прозрачность элемента */
+            visibility:visible; /* Отображение элемента */
+        }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            margin-top: 20px; /* Добавлен отступ сверху для контейнера */
+            padding-bottom: 100px; /* Добавлен отступ снизу для учета высоты подвала */
+        }
+
+        .main-image {
+            width: 100%; /* Изображение теперь будет адаптивным к размерам контейнера */
+            max-width: 1000px; /* Максимальная ширина изображения */
+            height: auto;
+        }
+
+        /* Стили для подвала */
+        .footer {
+            background-color: #007acc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px; /* Устанавливаем фиксированную высоту подвала */
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        /* Стили для иконок instagram, facebook, vk */
+        .footer-images {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center; /* Выравниваем по центру по вертикали */
+            margin-top: -30px; /* Поднимаем иконки на 30px */
+        }
+
+        .footer-images img {
+        margin-right: 10px;
+        width: 40px;
+        height: auto;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="navbar">
+        <div>
+            <img src="img/logo.png" alt="images">
+        </div>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="#" id="myLink">Подписки</a>
+                <script src="window.js"></script>
+                <ul class="submenu">
+                    <li><a href="individual.html">Индивидуальный</a></li>
+                    <li><a href="subscription/premium.html">Премиум</a></li>
+                    <li><a href="subscription/premium for two.html">Премиум на двоих</a></li>
+                </ul>
+            </li>
+            <li><a href="fff.html">Предметы</a>
+                <ul class="submenu">
+                    <li><a href="subject/all subjects.html">Все</a></li>
+                    <li><a href="subject/required subjects.html">Обязательные</a></li>
+                    <li><a href="subject/profile subjects.html">Профильные</a></li>
+                </ul>
+            </li>
+            <li><a href="test.html">Сдать пробный тест</a></li>
+            <li><a href="ggg.html">О нас</a>
+                <ul class="submenu">
+                    <li><a href="about us.html">О сайте</a></li>
+                    <li><a href="branches.html">Наши филиалы</a></li>
+                </ul>
+            </li>
+            <li class="search"><a href="search.html">Поиск</a></li>
+            <li>
+                <a href="fff.html">Русский</a>
+                <ul class="submenu">
+                    <li><a href="fff.html">Казахский</a></li>
+                    <li><a href="fff.html">Английский</a></li>
+                </ul>
+            </li>
+            <li><a href="personal account.html">Войти</a></li>
+        </ul>
+    </div>
+
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="carousel__item">
+                <div class="carousel__info">
+                    <div class="carousel__title">ПОДГОТОВИМ К ЕНТ В КРАТЧАЙШИЕ СРОКИ</div>
+                </div>
+            </div>
+            <div class="carousel__item" style="animation-delay: 3s;"> <!-- Delay the second slide by 3 seconds -->
+                <div class="carousel__info">
+                    <div class="carousel__title">ВОЗМОЖНОСТЬ СДАТЬ ПРОБНЫЙ ТЕСТ</div>
+                </div>
+            </div>
+            <div class="carousel__item" style="animation-delay: 6s;"> <!-- Delay the third slide by 6 seconds -->
+                <div class="carousel__info">
+                    <div class="carousel__title">ВСЕГДА НА СВЯЗИ</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: right;">
+        <img src="img/fon.jpg" alt="Рисунок" style="width: 90%;">
+    </div>
+
+    <div class="footer">
+        <footer>
+            <p>&copy; 2024 Все права защищены. Пользовательское соглашение</p>
+            <div class="footer-images">
+                <a href="fff.html"><img src="img/instagram.png" alt="Инстаграм"></a>
+                <a href="fff.html"><img src="img/facebook.png" alt="Фейсбук"></a>
+                <a href="fff.html"><img src="img/vk.png" alt="ВКонтакте"></a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

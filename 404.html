@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error 404</title>
+    <style>
+        @keyframes move {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-50px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+}
+
+.heading {
+    font-size: 100px;
+    margin-bottom: 20px;
+    animation: move 2s infinite; /* Анимация движения */
+}
+
+.message {
+    font-size: 24px;
+}7
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">404</h1>
+        <p class="message">Страница не найдена</p>
+        <a href="index.html"><p>Перейти на главную страницу</p></a>
+    </div>
+</body>
+</html>

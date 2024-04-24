@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individual</title>
+    <style>
+        /* Обнуляем стандартные отступы и поля */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh; /* Установка высоты страницы как минимум 100% видимого окна */
+            position: relative; /* Установка позиции относительно тела документа */
+        }
+
+        #header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Стили для навигационного меню */
+        #navbar, #navbar ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #navbar {
+            height: 70px; /* Увеличиваем высоту навигационного меню */
+            background-color: #007acc;
+            display: flex; /* Используем flexbox для расположения элементов в строку */
+            align-items: center; /* Выравниваем элементы по вертикали */
+            justify-content: center; /* Выравниваем элементы по горизонтали */
+            margin-right: 0; /* Убираем отступ */
+        }
+
+        #navbar img {
+             margin-right: 10px; /* Отступ между логотипом и пунктами меню */
+            width: 75px;
+        }
+
+        #navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #navbar li {
+            position: relative;
+            display: inline-block;
+        }
+
+        #navbar li a {
+            display: block;
+            padding: 20px; /* Увеличиваем отступы для большего кликабельного пространства */
+            color: white;
+            text-decoration: none;
+        }
+
+        #navbar li:hover {
+            background-color: blue;
+        }
+
+        #navbar li.search {
+            margin-left: 20px; /* Отступ для элемента "Поиск" */
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #007acc;
+            z-index: 1;
+        }
+
+        #navbar li:hover .submenu {
+            display: block;
+        }
+
+        .submenu li {
+            display: block;
+        }
+
+        .submenu li a {
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .submenu li:hover {
+            background-color: #005f8b;
+        }
+
+        /* Стили для формы и кнопок*/
+        form {
+            width: 300px;
+            margin: 50px auto; /* Центрируем форму по горизонтали и по вертикали */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px; /* Увеличиваем размер кнопки */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px; /* Увеличиваем отступ сверху */
+            display: block; /* Превращаем кнопку в блочный элемент */
+            width: 100px; /* Растягиваем кнопку на всю ширину */
+            margin: 20px auto 0; /* Центрируем кнопку по горизонтали и добавляем отступ сверху */
+        }
+
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="tel"] {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            float: center;
+        }
+
+        .userData {
+            margin-top: 20px;
+        }
+
+        .userData p {
+            margin-bottom: 10px;
+        }
+
+        /* Стили для подвала */
+        .footer {
+            background-color: #007acc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px; /* Устанавливаем фиксированную высоту подвала */
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .footer-images {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center; /* Выравниваем по центру по вертикали */
+            margin-top: -30px; /* Поднимаем иконки на 20px */
+        }
+
+        .footer-images img {
+            margin-right: 10px;
+            width: 40px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div>
+            <img src="img/logo.png" alt="images">
+        </div>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="fff.html">Подписки</a>
+                <ul class="submenu">
+                    <li><a href="subscription/individual.html">Индивидуальный</a></li>
+                    <li><a href="subscription/premium.html">Премиум</a></li>
+                    <li><a href="subscription/premium for two.html">Премиум на двоих</a></li>
+                </ul>
+            </li>
+            <li><a href="fff.html">Предметы</a>
+                <ul class="submenu">
+                    <li><a href="subject/all subjects.html">Все</a></li>
+                    <li><a href="subject/required subjects.html">Обязательные</a></li>
+                    <li><a href="subject/profile subjects.html">Профильные</a></li>
+                </ul>
+            </li>
+            <li><a href="test.html">Сдать пробный тест</a></li>
+            <li><a href="#">О нас</a>
+                <ul class="submenu">
+                    <li><a href="about us.html">О сайте</a></li>
+                    <li><a href="branches.html">Наши филиалы</a></li>
+                </ul>
+            </li>
+            <li class="search"><a href="search.html">Поиск</a></li>
+            <li>
+                <a href="fff.html">Русский</a>
+                <ul class="submenu">
+                    <li><a href="fff.html">Казахский</a></li>
+                    <li><a href="fff.html">Английский</a></li>
+                </ul>
+            </li>
+            <li><a href="personal account.html">Войти</a></li>
+        </ul>
+    </div>
+
+    <div id="app">
+        <form id="contactForm" v-if="!submitted" @submit.prevent="submitForm">
+          <label for="name">Имя:</label>
+          <input type="text" id="name" name="name" v-model="formData.name" required pattern="[A-Za-zА-Яа-яЁё\s]+" title="Имя должно содержать только буквы и пробелы">
+          
+          <label for="surname">Фамилия:</label>
+          <input type="text" id="surname" name="surname" v-model="formData.surname" required pattern="[A-Za-zА-Яа-яЁё\s]+" title="Фамилия должна содержать только буквы и пробелы">
+      
+          <label for="phoneNumber">Номер телефона:</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" v-model="formData.phoneNumber" required>
+          
+          <button type="submit">Отправить</button>
+        </form>
+      
+        <div class="userData" v-if="showUserData">
+          <p><strong>Имя:</strong> {{ formData.name }}</p>
+          <p><strong>Фамилия:</strong> {{ formData.surname }}</p>
+          <p><strong>Номер телефона:</strong> {{ formData.phoneNumber }}</p>
+          <p style="color: green">Заявка в обработке</p>
+        </div>
+
+        <!-- Добавляем кнопку "Заявка" -->
+        <button @click="showUserData = true">Заявка</button>
+    </div>
+      
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/imask"></script>
+    <script>
+        new Vue({
+          el: '#app',
+          data() {
+            return {
+              formData: {
+                name: '',
+                surname: '',
+                phoneNumber: ''
+              },
+              showUserData: false,
+              submitted: false
+            }
+          },
+          mounted() {
+            // Применяем маску к полю ввода номера телефона
+            const phoneNumberInput = document.getElementById('phoneNumber');
+            IMask(phoneNumberInput, {
+              mask: '+{7} (000) 000-00-00'
+            });
+          },
+          methods: {
+            submitForm() {
+              // Проверяем, содержат ли имя и фамилия цифры
+              if (/\d/.test(this.formData.name) || /\d/.test(this.formData.surname)) {
+                alert("Имя и фамилия не должны содержать цифры.");
+                return;
+              }
+              
+              // Показываем диалоговое окно
+              if (confirm("В течении дня с вами свяжется оператор.")) {
+                // Помечаем форму как отправленную
+                this.submitted = true;
+              }
+            }
+          }
+        });
+    </script>
+
+    <div style="text-align: right;">
+        <img src="img/fon.jpg" alt="Рисунок" style="width: 90%;">
+    </div>
+
+    <div class="footer">
+        <footer>
+            <p>&copy; 2024 Все права защищены. Пользовательское соглашение</p>
+        </footer>
+        <div class="footer-images">
+            <a href="fff.html"><img src="img/instagram.png" alt="Instagram"></a>
+            <a href="fff.html"><img src="img/facebook.png" alt="Facebook"></a>
+            <a href="fff.html"><img src="img/vk.png" alt="VK"></a>
+        </div>
+    </div>
+</body>
+</html>

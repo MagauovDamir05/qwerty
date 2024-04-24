@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branches</title>
+    <!-- Подключаем библиотеку Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Обнуляем стандартные отступы и поля */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh; /* Установка высоты страницы как минимум 100% видимого окна */
+            position: relative; /* Установка позиции относительно тела документа */
+        }
+
+        /* Стили для навигационного меню */
+        #navbar, #navbar ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #navbar {
+            height: 70px; /* Увеличиваем высоту навигационного меню */
+            background-color: #007acc;
+            display: flex; /* Используем flexbox для расположения элементов в строку */
+            align-items: center; /* Выравниваем элементы по вертикали */
+            justify-content: center; /* Выравниваем элементы по горизонтали */
+            margin-right: 0; /* Убираем отступ */
+        }
+
+        #navbar img {
+             margin-right: 10px; /* Отступ между логотипом и пунктами меню */
+            width: 75px;
+        }
+
+        #navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #navbar li {
+            position: relative;
+            display: inline-block;
+        }
+
+        #navbar li a {
+            display: block;
+            padding: 20px; /* Увеличиваем отступы для большего кликабельного пространства */
+            color: white;
+            text-decoration: none;
+        }
+
+        #navbar li:hover {
+            background-color: blue;
+        }
+
+        #navbar li.search {
+            margin-left: 20px; /* Отступ для элемента "Поиск" */
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #007acc;
+            z-index: 1;
+        }
+
+        #navbar li:hover .submenu {
+            display: block;
+        }
+
+        .submenu li {
+            display: block;
+        }
+
+        .submenu li a {
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .submenu li:hover {
+            background-color: #005f8b;
+        }
+
+        /* Стили для секции */
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Центрируем элементы по горизонтали */
+        }
+
+        /* Стили для надписи "Наши филиалы" */
+        #branchTitle {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 24px;
+            color: #007acc; /* Цвет текста */
+            margin-top: 20px; /* Отступ сверху */
+        }
+
+        /* Стили для карты */
+        #map {
+            width: 700px;
+            height: auto;
+            margin-top: 10px; /* Дополнительный отступ над картой */
+        }
+
+        #tooltip {
+            position: absolute;
+            background-color: #007acc;
+            color: white;
+            padding: 5px;
+            display: none;
+        }
+
+        /* Стили для диаграммы */
+        #content-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Опционально: сделает контейнер высотой как минимум экрана */
+        }
+
+        #chartContainer {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 20px;
+            margin-bottom: 20px; /* Добавляем отступ снизу для разделения диаграммы и подвала */
+        }
+
+        #myChart {
+            max-width: 300px; /* Уменьшаем максимальную ширину диаграммы */
+            max-height: 300px; /* Уменьшаем максимальную высоту диаграммы */
+        }
+
+        /* Стили для подвала */
+        .footer {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            background-color: #007acc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            height: 60px; /* Устанавливаем фиксированную высоту подвала */
+            margin-top: auto;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .footer-images {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center; /* Выравниваем по центру по вертикали */
+            margin-top: -30px; /* Поднимаем иконки на 20px */
+        }
+
+        .footer-images img {
+            margin-right: 10px;
+            width: 40px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div>
+            <img src="img/logo.png" alt="images">
+        </div>
+        
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="#" id="myLink">Подписки</a>
+                <script src="window.js"></script>
+                <ul class="submenu">
+                    <li><a href="individual.html">Индивидуальный</a></li>
+                    <li><a href="subscription/premium.html">Премиум</a></li>
+                    <li><a href="subscription/premium for two.html">Премиум на двоих</a></li>
+                </ul>
+            </li>
+            <li><a href="fff.html">Предметы</a>
+                <ul class="submenu">
+                    <li><a href="subject/all subjects.html">Все</a></li>
+                    <li><a href="subject/required subjects.html">Обязательные</a></li>
+                    <li><a href="subject/profile subjects.html">Профильные</a></li>
+                </ul>
+            </li>
+            <li><a href="test.html">Сдать пробный тест</a></li>
+            <li><a href="#">О нас</a>
+                <ul class="submenu">
+                    <li><a href="about us.html">О сайте</a></li>
+                    <li><a href="branches.html">Наши филиалы</a></li>
+                </ul>
+            </li>
+            <li class="search"><a href="search.html">Поиск</a></li>
+            <li>
+                <a href="fff.html">Русский</a>
+                <ul class="submenu">
+                    <li><a href="fff.html">Казахский</a></li>
+                    <li><a href="fff.html">Английский</a></li>
+                </ul>
+            </li>
+            <li><a href="personal account.html">Войти</a></li>
+        </ul>
+    </div>
+
+    <section>
+        <h1 id="branchTitle">Наши филиалы</h1>
+        <img id="map" src="img/Kazakhstan.jpg" width="700px" height="auto" alt="Map" usemap="#image-map">
+    
+        <map name="image-map">
+            <area shape="rect" coords="374,20,402,47" href="#1-rect" alt="Город: Петропавловск, Адрес: Пушкина 87, График работы: 10:00-18:00 ПН-ПТ, Номер: +7 705 974 55 69">
+            <area shape="rect" coords="412,114,427,134" href="#2-rect" alt="Город: Астана, Адрес: Ленина 65, График работы: 10:00-18:00 ПН-ПТ, Номер: +7 775 874 54 74">
+            <area shape="rect" coords="519,296,542,316" href="#3-rect" alt="Город: Алматы, Адрес: Кирова 98, График работы: 10:00-18:00 ПН-ПТ, Номер: +7 777 365 75 12">
+            <area shape="rect" coords="94,192,113,207" href="#4-rect" alt="Город: Атырау, Адрес: Степная 48, График работы: 10:00-18:00 ПН-ПТ, Номер: +7 771 458 85 96">
+            <area shape="rect" coords="392,333,408,349" href="#4-rect" alt="Город: Шымкент, Адрес: Курмангазы 49, График работы: 10:00-18:00 ПН-ПТ, Номер: +7 776 774 95 19">
+        </map>
+
+        <div id="tooltip"></div>
+    </section>
+
+    <div id="content-wrapper">
+        <div id="chartContainer">
+            <h2 style="font-size: 24px; color:#007acc">Число свободных мест</h2>
+            <canvas id="myChart" width="200" height="200"></canvas>
+        </div>
+
+    <script>
+        /* Скрипт для карты */
+        const areas = document.querySelectorAll('area');
+        const tooltip = document.getElementById('tooltip');
+
+        areas.forEach(area => {
+            area.addEventListener('mouseover', function() {
+                const info = this.getAttribute('alt').split(', ');
+                const city = info[0].split(': ')[1];
+                const address = info[1].split(': ')[1];
+                const schedule = info[2].split(': ')[1];
+                const number = info[3].split(': ')[1];
+                const coords = this.getBoundingClientRect();
+                tooltip.style.top = coords.top + 'px';
+                tooltip.style.left = coords.right + 'px';
+                tooltip.innerHTML = '<ul><li>Город: ' + city + '</li><li>Адрес: ' + address + '</li><li>График работы: ' + schedule + '</li><li>Номер: ' + number + '</li></ul>';
+                tooltip.style.display = 'block';
+            });
+
+            area.addEventListener('mouseout', function() {
+                tooltip.style.display = 'none';
+            });
+        });
+
+        /* Скрипт для диаграммы */
+        var ctx = document.getElementById('myChart').getContext('2d');
+        
+        // Подготовка данных
+        var cityData = {
+            labels: ['Петропавловск', 'Астана', 'Алматы', 'Шымкент', 'Атырау'],
+            datasets: [{
+                data: [10, 20, 30, 15, 25],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)'
+                ]
+            }]
+        };
+
+        // Создаем круговую диаграмму
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: cityData,
+            options: {
+                animation: {
+                    animateRotate: true, // Включаем анимацию вращения
+                    animateScale: true // Включаем анимацию масштабирования
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var city = data.labels[tooltipItem.index];
+                            var value = data.datasets[0].data[tooltipItem.index];
+                            return city + ': ' + value;
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+<div class="footer">
+    <footer>
+        <p>&copy; 2024 Все права защищены. Пользовательское соглашение</p>
+        <div class="footer-images">
+            <a href="fff.html"><img src="img/instagram.png" alt="Инстаграм"></a>
+            <a href="fff.html"><img src="img/facebook.png" alt="Фейсбук"></a>
+            <a href="fff.html"><img src="img/vk.png" alt="ВКонтакте"></a>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

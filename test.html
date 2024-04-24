@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        /* Обнуляем стандартные отступы и поля */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh; /* Установка высоты страницы как минимум 100% видимого окна */
+            position: relative; /* Установка позиции относительно тела документа */
+        }
+
+        /* Стили для навигационного меню */
+        #navbar, #navbar ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #navbar {
+            height: 70px; /* Увеличиваем высоту навигационного меню */
+            background-color: #007acc;
+            display: flex; /* Используем flexbox для расположения элементов в строку */
+            align-items: center; /* Выравниваем элементы по вертикали */
+            justify-content: center; /* Выравниваем элементы по горизонтали */
+            margin-right: 0; /* Убираем отступ */
+        }
+
+        #navbar img {
+            margin-right: 10px; /* Отступ между логотипом и пунктами меню */
+            width: 75px;
+        }
+
+        #navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #navbar li {
+            position: relative;
+            display: inline-block;
+            }
+
+        #navbar li a {
+            display: block;
+            padding: 20px; /* Увеличиваем отступы для большего кликабельного пространства */
+            color: white;
+            text-decoration: none;
+        }
+
+        #navbar li:hover {
+            background-color: blue;
+        }
+
+        #navbar li.search {
+            margin-left: 20px; /* Отступ для элемента "Поиск" */
+        }
+
+        /* Стили для подпункта */
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #007acc;
+            z-index: 1;
+        }
+
+        #navbar li:hover .submenu {
+            display: block;
+        }
+
+        .submenu li {
+            display: block;
+        }
+
+        .submenu li a {
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .submenu li:hover {
+            background-color: #005f8b;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .container h2 {
+            color:#3765c8;
+        }
+
+        .container .img-top,
+        .container .img-bottom {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px; /* Добавляем отступ между группами изображений */
+            margin: 30px; /* Добавляем небольшие отступы между изображениями */
+            gap: 30px; /* Устанавливаем расстояние между изображениями */
+        }
+
+        .start-test-button {
+            display: block;
+            margin: 20px auto; /* Центрирование кнопки по горизонтали и добавление отступа сверху */
+            padding: 10px 20px;
+            background-color: #007acc; /* Синий цвет фона */
+            color: white; /* Белые буквы */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .start-test-button:hover {
+            background-color: #005f8b; /* Изменение цвета фона при наведении */
+        }
+
+        /* Стили для подвала */
+        .footer {
+            background-color: #007acc;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            height: 80px; /* Устанавливаем фиксированную высоту подвала */
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .footer-images {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .footer-images img {
+            margin-right: 10px;
+            width: 40px;
+            height: auto;
+            margin-top: -30px; /* Поднимаем иконки на 30px */
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div>
+            <img src="img/logo.png" alt="images">
+        </div>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="fff.html">Подписки</a>
+                <ul class="submenu">
+                    <li><a href="subscription/individual.html">Индивидуальный</a></li>
+                    <li><a href="subscription/premium.html">Премиум</a></li>
+                    <li><a href="subscription/premium for two.html">Премиум на двоих</a></li>
+                </ul>
+            </li>
+            <li><a href="fff.html">Предметы</a>
+                <ul class="submenu">
+                    <li><a href="subject/all subjects.html">Все</a></li>
+                    <li><a href="subject/required subjects.html">Обязательные</a></li>
+                    <li><a href="subject/profile subjects.html">Профильные</a></li>
+                </ul>
+            </li>
+            <li><a href="test.html">Сдать пробный тест</a></li>
+            <li><a href="#">О нас</a>
+                <ul class="submenu">
+                    <li><a href="about us.html">О сайте</a></li>
+                    <li><a href="branches.html">Наши филиалы</a></li>
+                </ul>
+            </li>
+            <li class="search"><a href="search.html">Поиск</a></li>
+            <li>
+                <a href="fff.html">Русский</a>
+                <ul class="submenu">
+                    <li><a href="fff.html">Казахский</a></li>
+                    <li><a href="fff.html">Английский</a></li>
+                </ul>
+            </li>
+            <li><a href="personal account.html">Войти</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Обязательные предметы</h2>
+        <div>
+            <a href="fff.html"><img src="img/history KZ.png" alt="История Казахстана"></a>
+            <a href="fff.html"><img src="img/reading.png" alt="Грамотность чтения"></a>
+            <a href="fff.html"><img src="img/mathem literacy.png" alt="Математическая грамотность"></a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Профильные предметы</h2>
+        <div class="img-top">
+            <a href="fff.html"><img src="img/mathematics.png" alt="Математика"></a>
+            <a href="fff.html"><img src="img/physics.png" alt="Физика"></a>
+            <a href="fff.html"><img src="img/chemistry.png" alt="Химия"></a>
+            <a href="fff.html"><img src="img/biology.png" alt="Биология"></a>
+            <a href="fff.html"><img src="img/informatics.png" alt="Информатика"></a>
+        </div>
+        <div class="img-bottom">
+            <a href="fff.html"><img src="img/history.png" alt="Всемирная история"></a>
+            <a href="fff.html"><img src="img/geography.png" alt="География"></a>
+            <a href="fff.html"><img src="img/law basics.png" alt="Основы права"></a>
+            <a href="fff.html"><img src="img/english.png" alt="Английский язык"></a>
+            <a href="fff.html"><img src="img/kazakh language.png" alt="Казахский язык"></a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <button class="start-test-button">Начать тестирование</button>
+    </div>
+    
+
+    <div class="footer">
+        <footer>
+            <p>&copy; 2024 Все права защищены. Пользовательское соглашение</p>
+        </footer>
+        <div class="footer-images">
+            <a href="fff.html"><img src="img/instagram.png" alt="Instagram"></a>
+            <a href="fff.html"><img src="img/facebook.png" alt="Facebook"></a>
+            <a href="fff.html"><img src="img/vk.png" alt="VK"></a>
+        </div>
+    </div>
+</body>
+</html>
